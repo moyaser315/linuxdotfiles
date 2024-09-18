@@ -1,0 +1,72 @@
+#!/bin/bash
+#   	 _ _
+#   __ _| (_) __ _ ___  ___  ___
+#  / _` | | |/ _` / __|/ _ \/ __|
+# | (_| | | | (_| \__ \  __/\__ \
+#  \__,_|_|_|\__,_|___/\___||___/
+
+
+# shell commands
+# alias ls='ls --color=auto'
+# alias la="ls -a"
+# alias ll="ls -l"
+alias ls='exa'
+alias la="exa -la"
+alias mv="mv -v"  
+alias rm="rm -v"
+alias ll="exa -l"
+alias bat="batcat --color=always --style=plain "
+alias cat="batcat"
+alias cls=clear
+alias f3d="swallow f3d & disown"
+alias x="exit"
+alias lf=lfrun
+alias p="python3.12"
+alias s="subl"
+alias v="vim"
+alias install="sudo apt install"
+alias update="sudo apt update"
+alias upgrade="sudo apt upgrade"
+alias edge="microsoft-edge"
+
+
+# session management
+alias reboot="sudo reboot"
+alias halt='sudo halt'
+alias shutdown='sudo shutdown'
+alias poweroff='sudo poweroff'
+alias zzz='sudo zzz'
+
+alias conservation="sudo sh ~/scripts/conservation"
+alias eng="cd /home/mohamed/HDD/enginnering"
+alias anime="cd /home/mohamed/HDD/anime"
+
+# FUNCTIONS 
+clean(){
+	  sudo xbps-remove -o # remove unneeded orphan pkgs
+	  sudo xbps-remove -O # remove obsolete cache
+	  sudo vkpurge rm all # remove old kernels and drivers
+}
+
+rmd(){ 
+    Rscript -e "rmarkdown::render('$1')" 
+}
+
+get_pass(){
+    pass "$1" | xclip -selection clipboard 
+}
+
+gen_pass(){
+    pwgen -By 30 1 | xclip -selection clipboard
+}
+
+change_mac(){
+    sudo ifconfig wlp4s0 down
+    sudo macchanger -r wlp4s0
+    sudo ifconfig wlp4s0 up 
+}
+
+marktext(){
+    swallow ~/pkgs/marktext.AppImage "$@" & disown >/dev/null 
+}
+

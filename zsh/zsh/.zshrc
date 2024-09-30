@@ -1,6 +1,7 @@
 export HISTSIZE=100000
 export SAVEHIST=100000
-export PATH=/usr/local/cuda/bin:$PATH
+export PATH=/usr/local/cuda-12.1/bin${PATH:+:${PATH}}:$HOME/.local/bin
+export LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 # HISTORY STUFF: copied from here: https://github.com/Phantas0s/.dotfiles/blob/master/zsh/zshrc
 HISTFILE=$ZDOTDIR/.zsh_history
@@ -17,11 +18,19 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 source $ZDOTDIR/aliases
 source $ZDOTDIR/plugins/F-Sy-H/F-Sy-H.plugin.zsh
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Source the Git prompt helper script
+source $ZDOTDIR//plugins/git-prompt/git-prompt.sh
+
+
+
+
+
+export PS1="%B%F{cyan}%c%f%b %B%F{202}>%f%b "
 
 # source $ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 # source $ZDOTDIR/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-export PROMPT='%B%F{cyan}%c%f%b %B%F{202}>%f%b '
+
 # colorscript -e 45
 
 autoload -Uz +X compinit && compinit
@@ -36,3 +45,9 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+plugins=(virtualenv)
+
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
+

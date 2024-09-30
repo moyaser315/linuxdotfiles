@@ -21,14 +21,14 @@ alias cls=clear
 alias f3d="swallow f3d & disown"
 alias x="exit"
 alias lf=lfrun
-alias p="python3.12"
+alias p="python3.8"
 alias s="subl"
 alias v="vim"
 alias install="sudo apt install"
 alias update="sudo apt update"
 alias upgrade="sudo apt upgrade"
 alias edge="microsoft-edge"
-
+alias xournalpp="flatpak run com.github.xournalpp.xournalpp"
 
 # session management
 alias reboot="sudo reboot"
